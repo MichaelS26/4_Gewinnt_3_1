@@ -1,0 +1,65 @@
+﻿<!-- Formular, um zwei Spielernamen einzugeben -->
+<UserControl x:Class="VierGewinnt.View.Ansichten.NamensEingabeControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Height="300" Width="400">
+
+    <Grid Background="#60000000">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!-- Weiße Box in der Mitte -->
+        <Border Grid.Row="0"
+                Background="#f0f0f0"
+                CornerRadius="8"
+                BorderBrush="#555"
+                BorderThickness="2"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+            <StackPanel Width="200"
+                        Margin="20">
+                <TextBlock Text="Spielernamen"
+                           FontSize="16"
+                           FontWeight="Bold"
+                           Margin="0,0,0,10"/>
+                <!-- Spieler 1 -->
+                <TextBlock Text="Spieler 1:"/>
+                <TextBox x:Name="txtP1"
+                         Margin="0,0,0,8"/>
+                <!-- Spieler 2 -->
+                <TextBlock Text="Spieler 2:"/>
+                <TextBox x:Name="txtP2"
+                         Margin="0,0,0,8"/>
+                <!-- Falscheingabe -->
+                <TextBlock x:Name="txtFehler"
+                           Foreground="Red"
+                           Visibility="Collapsed"
+                           Margin="0,5"/>
+                <!-- Ok Button -->
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                    <Button Content="OK"
+                            Margin="5"
+                            Click="BtnOk_Click"/>
+                    <Button Content="Abbrechen"
+                            Margin="5"
+                            Click="BtnAbbrechen_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+           <!-- Hinweistext-->
+        <TextBlock Grid.Row="1"
+                   FontSize="10"
+                   Foreground="#333"
+                   TextWrapping="Wrap"
+                   HorizontalAlignment="Center"
+                   Margin="0,10,0,0">
+            Hinweis:
+            * Am besten spielbar mit einem Spieler an der Tastatur und einem an der Maus.
+            * Spielsteine kann man einwerfen durch Drücken der Nummernblöcke mit Maus oder durch Tastendruck (1..7).
+            * Mit einem Mausklick auf "Aufgeben" oder durch Drücken der Escape-Taste kann ein Spieler die Runde verlassen,
+              dabei geht jedoch der Siegerpunkt an den anderen Spieler.
+        </TextBlock>
+    </Grid>
+</UserControl>

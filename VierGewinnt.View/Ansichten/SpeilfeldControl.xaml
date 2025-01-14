@@ -1,0 +1,100 @@
+﻿<!-- Das Spielfeld-Fenster -->
+<UserControl x:Class="VierGewinnt.View.Ansichten.SpielfeldControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Height="375" Width="500">
+
+    <Grid>
+        <!-- Obere Leiste (40px) mit "4 Gewinnt", Spieler, Aufgeben -->
+        <Border Background="#aaa"
+                Height="40"
+                VerticalAlignment="Top">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Links: Überschrift -->
+                <TextBlock Text="4 Gewinnt"
+                           Foreground="White"
+                           FontWeight="Bold"
+                           FontSize="16"
+                           Margin="8,0,0,0"
+                           VerticalAlignment="Center" />
+
+                <!--Mitte: Aktueller Spieler -->
+                <StackPanel Orientation="Horizontal"
+                            Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                    <TextBlock x:Name="txtSpieler"
+                               Background="#ffc"
+                               Foreground="Black"
+                               Margin="10,0"
+                               FontWeight="Bold"
+                               Padding="4,2"/>
+                </StackPanel>
+
+                <!--Rechts: Aufgeben-Button -->
+                <StackPanel Orientation="Horizontal"
+                            Grid.Column="2"
+                            HorizontalAlignment="Right"
+                            Margin="0,0,8,0"
+                            VerticalAlignment="Center">
+                    <Button Content="Aufgeben (ESC)"
+                            Margin="5,0"
+                            Click="BtnAufgeben_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Spaltenknöpfe (1..7) -->
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Left"
+                    Margin="104,36,0,293">
+            <Button Content="1" Tag="0" Width="30" Height="30" Margin="5"
+                    Click="BtnSpalte_Click"/>
+            <Button Content="2" Tag="1" Width="30" Height="30" Margin="5"
+                    Click="BtnSpalte_Click"/>
+            <Button Content="3" Tag="2" Width="30" Height="30" Margin="5"
+                    Click="BtnSpalte_Click"/>
+            <Button Content="4" Tag="3" Width="30" Height="30" Margin="5"
+                    Click="BtnSpalte_Click"/>
+            <Button Content="5" Tag="4" Width="30" Height="30" Margin="5"
+                    Click="BtnSpalte_Click"/>
+            <Button Content="6" Tag="5" Width="30" Height="30" Margin="5"
+                    Click="BtnSpalte_Click"/>
+            <Button Content="7" Tag="6" Width="30" Height="30" Margin="5"
+                    Click="BtnSpalte_Click"/>
+        </StackPanel>
+
+        <!-- abgerundetes Brett mit Ellipsen -->
+        <Grid Margin="-1,86,1,5">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+
+            <!-- Brett-Hintergrund -->
+            <Border Grid.Row="0"
+                    Background="#ab8f71"
+                    CornerRadius="30"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Padding="20">
+                <!--  Ellipsen -->
+                <UniformGrid x:Name="FelderGrid"
+                             Rows="6" Columns="7"/>
+            </Border>
+
+            <!-- Stand-Fuß -->
+            <Border Grid.Row="1"
+                    Background="#8f704b"
+                    CornerRadius="5,5,0,0"
+                    Width="280" Height="40"
+                    HorizontalAlignment="Center"/>
+        </Grid>
+    </Grid>
+</UserControl>
